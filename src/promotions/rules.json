@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "name": "Pizza Promotions",
+    "description": "Buy 2 or more pizzas, the price for each drops to €3.99.",
+    "productCode": "002",
+    "conditions": {
+      "minQuantity": 2,
+      "minPurchase": 0
+    },
+    "discount": {
+      "type": "fix",
+      "amount": 2
+    },
+    "priority": 1
+  },
+  {
+    "id": 2,
+    "name": "Price off",
+    "description": "If you spend over €30, you get 10% off your purchase.",
+    "productCode": "",
+    "conditions": {
+      "minQuantity": 0,
+      "minPurchase": 30
+    },
+    "discount": {
+      "type": "percent",
+      "amount": 10
+    },
+    "priority": 10
+  },
+  {
+    "id": 3,
+    "name": "Pizza 50% off",
+    "description": "Buy 2 or more pizzas, total price will drop to half.",
+    "productCode": "002",
+    "conditions": {
+      "minQuantity": 2,
+      "minPurchase": 0
+    },
+    "discount": {
+      "type": "percent",
+      "amount": 50
+    },
+    "priority": 2
+  }
+]
