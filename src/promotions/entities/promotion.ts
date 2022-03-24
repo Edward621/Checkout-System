@@ -3,8 +3,12 @@ export interface Condition {
   minQuantity: number;
 }
 
+export enum DiscountType {
+  FIX = 'FIX',
+  PERCENT = 'PERCENT',
+}
 export interface Discount {
-  type: string;
+  type: DiscountType;
   amount: number;
 }
 

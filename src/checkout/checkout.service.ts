@@ -2,14 +2,14 @@ import { Injectable, BadRequestException } from '@nestjs/common';
 import { PromotionsService } from '../promotions/promotions.service';
 import { ProductsService } from '../products/products.service';
 import { Product } from '../products/entities';
-import { Promotion, Condition } from '../promotions/entities';
+import { Promotion, Condition, DiscountType } from '../promotions/entities';
 
 @Injectable()
 export class CheckoutService {
-  private isCheckoutProcessInitialized: boolean;
-  private itemList: Product[];
-  private total: number;
-  private promotions: Promotion[];
+  isCheckoutProcessInitialized: boolean;
+  itemList: Product[];
+  total: number;
+  promotions: Promotion[];
 
   constructor(
     private promotionsService: PromotionsService,
@@ -69,10 +69,10 @@ export class CheckoutService {
   applyPromotion(products: Product[], promotion: Promotion) {
     const amount = promotion.discount.amount;
     switch (promotion.discount.type) {
-      case 'fix':
+      case DiscountType.FIX:
         this.total -= promotion.productCode ? products.length * amount : amount;
         break;
-      case 'percent':
+      case DiscountType.PERCENT:
         const total = promotion.productCode
           ? products.map((p) => p.price).reduce((a, b) => a + b)
           : this.total;
